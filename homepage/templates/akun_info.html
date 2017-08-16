@@ -1,0 +1,28 @@
+{% extends "layout/base-popup.html" %}
+{% block content %}
+	<div id="myModal" class="modal fade" role="dialog">
+	    <div class="modal-dialog">
+
+	        <!-- Modal content-->
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <a href="/daftar/" type="button" class="close" >&times;</a>
+	                <h4 class="modal-title">Pendaftaran Berhasil</h4>
+	            </div>
+	            <div class="modal-body">
+	                <p>Terima kasih sudah mendaftar, rarap cek email Anda. Proses pendaftaran membutuhkan waktu 2 &times; 24 Jam untuk proses verifikasi.</p>
+	            </div>
+	            <div class="modal-footer">
+	                <a href="/daftar/" type="button" class="btn btn-warning">Close</a>
+	            </div>
+	        </div>
+
+	    </div>
+	</div>
+{% endblock %}
+
+{% block inline_js %}
+	<script type="text/javascript">
+		$('#myModal').modal('show');
+	</script>
+{% endblock %}

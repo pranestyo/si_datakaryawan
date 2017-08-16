@@ -1,0 +1,99 @@
+{% extends "layout/base-popup.html" %}
+{% load perusahaan_helper %}
+{% block content %}
+	<div id="myModal" class="modal fade" role="dialog">
+	    <div class="modal-dialog modal-lg">
+
+	        <!-- Modal content-->
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <a href="/dashboard_perusahaan/" type="button" class="close" >&times;</a>
+	                <h4 class="modal-title">Karyawan</h4>
+	            </div>
+	            <div class="modal-body">
+	                <p>
+	                	<div class="table-responsive">
+	                		<table class="table table-bordered table-hover table-striped">
+	                			<thead>
+	                				<tr>
+	                					<th>No</th>
+	                					<td>Nama Karyawan</td>
+	                					<td>No. KTP</td>
+	                					<td>Pendidikan Terakhir</td>
+	                					<td>Jurusan</td>
+	                					<td>Provinsi</td>
+	                					<td>Kabupaten/Kota</td>
+	                					<td>Kecamatan</td>
+	                					<td>Alamat</td>
+	                					<td>Jenis Kelamin</td>
+	                					<td>Email</td>
+	                					<td>Telepon</td>
+	                					<td>Gaji</td>
+	                					<td>Jabatan</td>
+	                					<td>Divisi</td>
+	                					<td>Status Karyawan</td>
+	                				</tr>
+	                			</thead>
+	                			<tbody>
+	                				{% if detail_karyawan %}
+	                					{% for detail in detail_karyawan %}
+	                					<tr>
+	                						<td>{{forloop.counter|get_table_number:detail_karyawan.number}}</td>
+	                						<td>{{detail.nama_karyawan}}</td>
+	                						<td>{{detail.no_identitas}}</td>
+	                						<td>{{detail.pendidikan_terakhir}}</td>
+	                						<td>{{detail.jurusan}}</td>
+	                						<td>{{detail.provinsi}}</td>
+	                						<td>{{detail.kabupatenkota}}</td>
+	                						<td>{{detail.kecamatan}}</td>
+	                						<td>{{detail.alamat}}</td>
+	                						<td>{{detail.jenis_kelamin}}</td>
+	                						<td>{{detail.email}}</td>
+	                						<td>{{detail.telepon}}</td>
+	                						<td>{{detail.gaji}}</td>
+	                						<td>{{detail.jabatan}}</td>
+	                						<td>{{detail.divisi}}</td>
+	                						<td>{{detail.status_karyawan}}</td>
+	                					</tr>
+	                					{% endfor %}
+	                				{% else %}
+	                				<tr>
+	                					<td colspan="16" style="text-align:center;">Tidak ada karyawan saat ini.</td>
+	                				</tr>
+	                				{% endif %}
+	                			</tbody>
+	                		</table>
+	                	</div>
+	                	<br />
+	                	<ul class="pager">
+	                		{% if detail_karyawan.has_previous %}
+	                		<li class="previous">
+	                			<a href="?page={{detail_karyawan.previous_page_number}}">previous</a>
+	                		</li>
+	                		{% endif %}
+	                		<li class="current">
+	                			Page {{detail_karyawan.number}} of {{detail_karyawan.paginator.num_pages}}.
+	                		</li>
+	                		{% if detail_karyawan.has_next %}
+	                		<li class="next">
+	                			<a href="?page={{detail_karyawan.next_page_number}}">next</a>
+	                		</li>
+	                		{% endif %}
+	                	</ul>
+	                </p>
+	            </div>
+	            <div class="modal-footer">
+	                <a href="/pdf/" type="button" class="btn btn-info"><span class="glyphicon glyphicon-print"></span> Print</a>
+	                <a href="/dashboard_perusahaan/" type="button" class="btn btn-warning">Close</a>
+	            </div>
+	        </div>
+
+	    </div>
+	</div>
+{% endblock %}
+
+{% block inline_js %}
+	<script type="text/javascript">
+		$('#myModal').modal('show');
+	</script>
+{% endblock %}

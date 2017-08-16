@@ -1,0 +1,28 @@
+{% extends "layout/base-popup.html" %}
+{% block content %}
+	<div id="myModal" class="modal fade" role="dialog">
+	    <div class="modal-dialog">
+
+	        <!-- Modal content-->
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <a href="/input/" type="button" class="close" >&times;</a>
+	                <h4 class="modal-title">Sukses</h4>
+	            </div>
+	            <div class="modal-body">
+	                <p>Tambah data karyawan berhasil.</p>
+	            </div>
+	            <div class="modal-footer">
+	                <a href="/input/" type="button" class="btn btn-warning">Close</a>
+	            </div>
+	        </div>
+
+	    </div>
+	</div>
+{% endblock %}
+
+{% block inline_js %}
+	<script type="text/javascript">
+		$('#myModal').modal('show');
+	</script>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "layout/base-popup.html" %}
+{% load perusahaan_helper %}
+{% block content %}
+	<div id="myModal" class="modal fade" role="dialog">
+	    <div class="modal-dialog modal-lg">
+
+	        <!-- Modal content-->
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <a href="/dashboard_perusahaan/" type="button" class="close" >&times;</a>
+	                <h4 class="modal-title">Karyawan Aktif</h4>
+	            </div>
+	            <div class="modal-body">
+	                <p>
+	                	<div class="table-responsive">
+	                		<table class="table table-bordered table-hover table-striped">
+	                			<thead>
+	                				<tr>
+	                					<th>No</th>
+	                					<td>Nama Karyawan</td>
+	                					<td>Mulai Bekerja</td>
+	                					<td>Foto</td>
+	                				</tr>
+	                			</thead>
+	                			<tbody>
+	                				{% if karyawan_aktif %}
+	                					{% for aktif in karyawan_aktif %}
+	                					<tr>
+	                						<td>{{forloop.counter|get_table_number:karyawan_aktif.number}}</td>
+	                						<td>{{aktif.karyawan}}</td>
+	                						<td>{{aktif.mulai_bekerja}}</td>
+	                						<td>{{aktif.foto}}</td>
+	                					</tr>
+	                					{% endfor %}
+	                				{% else %}
+	                				<tr>
+	                					<td colspan="4" style="text-align:center;">Tidak ada karyawan aktif saat ini.</td>
+	                				</tr>
+	                				{% endif %}
+	                			</tbody>
+	                		</table>
+	                	</div>
+	                	<br />
+	                	<ul class="pager">
+	                		{% if karyawan_aktif.has_previous %}
+	                		<li class="previous">
+	                			<a href="?page={{karyawan_aktif.previous_page_number}}">previous</a>
+	                		</li>
+	                		{% endif %}
+	                		<li class="current">
+	                			Page {{karyawan_aktif.number}} of {{karyawan_aktif.paginator.num_pages}}.
+	                		</li>
+	                		{% if karyawan.has_next %}
+	                		<li class="next">
+	                			<a href="?page={{karyawan_aktif.next_page_number}}">next</a>
+	                		</li>
+	                		{% endif %}
+	                	</ul>
+	                </p>
+	            </div>
+	            <div class="modal-footer">
+	                <a href="/pdf/" type="button" class="btn btn-info"><span class="glyphicon glyphicon-print"></span> Print</a>
+	                <a href="/dashboard_perusahaan/" type="button" class="btn btn-warning">Close</a>
+	            </div>
+	        </div>
+
+	    </div>
+	</div>
+{% endblock %}
+
+{% block inline_js %}
+	<script type="text/javascript">
+		$('#myModal').modal('show');
+	</script>
+{% endblock %}

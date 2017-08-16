@@ -1,0 +1,108 @@
+{% extends "layout/base-index.html" %}
+{% block content %}
+
+		<div class="row">
+			<div class="col-lg-12 col-md-offset-1">
+				<h1 class="page-header">Form Pendaftaran Perusahaan</h1>
+			</div>
+			<!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+		<div class="row">
+			<div class="col-lg-6 col-md-offset-1">
+                	<p>
+                		<div class="panel panel-primary">
+                        <a href="/daftar/">
+                        	<div class="panel-heading">
+                            	<span class="pull-left">Sudah mendaftar ? Klik disini untuk buat Akun.</span>
+                            	<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            	<div class="clearfix"></div>
+                        	</div>
+                        </a>
+                        <a href="/login_perusahaan/">
+                            <div class="panel-footer">
+                                <span class="pull-left">Sudah punya Akun ? Klik disini untuk Login.</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    	</div>
+                	</p>
+                    
+                </div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6 col-md-offset-1">
+				<p>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<i class="fa fa-bar-chart-o fa-fw"></i>
+							Silahkan mengisi form pendaftaran Perusahaan
+						</div>
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							{% if form.errors %}
+								<div class="alert alert-danger alert-dismissable">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+									{{ form.errors }}
+								</div>
+							{% endif %}
+							<form action="/mendaftar/" method="POST" role="form">
+								{% csrf_token %}
+								<table>
+									<tbody>
+										<tr>
+											<td><label>{{form.nama_perusahaan.label}}</label></td>
+											<td>{{form.nama_perusahaan}}</td>
+										</tr>
+										<tr>
+											<td><label>{{form.email.label}}</label></td>
+											<td>{{form.email}}</td>
+										</tr>
+										<tr>
+											<td><label>{{form.provinsi.label}}</label></td>
+											<td>{{form.provinsi}}</td>
+										</tr>
+										<tr>
+											<td><label>{{form.kabupatenkota.label}}</label></td>
+											<td>{{form.kabupatenkota}}</td>
+										</tr>
+										<tr>
+											<td><label>{{form.kecamatan.label}}</label></td>
+											<td>{{form.kecamatan}}</td>
+										</tr>
+										<tr>
+											<td><label>{{form.telepon.label}}</label></td>
+											<td>{{form.telepon}}</td>
+										</tr>
+										<tr>
+											<td><label>{{form.produk_utama.label}}</label></td>
+											<td>{{form.produk_utama}}</td>
+										</tr>
+										<tr>
+											<td><label>{{form.tenaga_kerja.label}}</label></td>
+											<td>{{form.tenaga_kerja}}</td>
+										</tr>
+										<tr>
+											<td><label>{{form.alamat.label}}</label></td>
+											<td>{{form.alamat}}</td>
+										</tr>
+									</tbody>
+								</table>
+								<!-- {{form.as_p}} -->
+								<br \><br \>
+
+								<input type="submit" class="btn btn-primary" value="Daftar" />
+								<button type="reset" class="btn btn-danger"><span class="glyphicon glyphicon-refresh"></span> Batal</button>
+							</form>
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</p>
+			</div>
+			<!-- /.col-lg-6 -->
+		</div>
+		<!-- /.row -->
+
+{% endblock %}

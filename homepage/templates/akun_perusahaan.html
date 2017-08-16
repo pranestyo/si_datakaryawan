@@ -1,0 +1,50 @@
+{% extends "layout/base-login.html" %}
+{% block content %}
+
+	<div class="row">
+		<div class="col-lg-6 col-md-offset-3">
+			<div class="login-panel panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><center>Sistem Informasi Data Karyawan - Silahkan Daftar Akun</center></h3>
+				</div>
+				<div class="panel-body">
+					<form action="/daftar/" method="POST" role="form">
+						{% csrf_token %}
+						{% if messages %}
+							<div class="alert alert-danger alert-dismissable">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+								<ul>
+									{% for message in messages %}
+										<li>{{message}}</li>
+									{% endfor %}
+								</ul>
+							</div>
+						{% endif %}
+						<fieldset>
+							<div class="form-group">
+								<label>{{form.username.label}}</label>
+								<input class="form-control" type="text" name="username" value="" placeholder="silahkan masukkan username" />
+							</div>
+							<div class="form-group">
+								<label>{{form.email.label}}</label>
+								<input class="form-control" type="email" name="email" value="" placeholder="gunakan email yang sama saat mendaftar." />
+							</div>
+							<div class="form-group">
+								<label>{{form.password1.label}}</label>
+								<input class="form-control" type="password" name="password1" value="" placeholder="silahkan masukan password">
+							</div>
+							<div class="form-group">
+								<label>{{form.password2.label}}</label>
+								<input class="form-control" type="password" name="password2" value="" placeholder="silahkan masukan kembali password Anda">
+							</div>
+							<input class="btn btn-lg btn-success btn-block" type="submit" value="Daftar">
+							<br />
+							<p>Belum mendaftar ? Silahkan daftar <a href="/mendaftar/">disini</a></p>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- /.col-lg-4 -->
+
+{% endblock %}

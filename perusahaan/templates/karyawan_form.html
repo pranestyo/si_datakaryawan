@@ -1,0 +1,107 @@
+
+{% extends "layout/base.html" %}
+{% block content %}
+
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Form Ubah Data Karyawan</h1>
+			<ol class="breadcrumb" style="margin-bottom: 5px;">
+				<li><a href="/">Beranda</a></li>
+				<li><a href="/detail_info/">Data Karyawan</a></li>
+				<li class="active">Ubah Data</li>
+			</ol>
+			<br \>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-users fa-fw"></i> Ubah Data Karyawan
+				</div>
+				<!-- /.panel-heading -->
+				<div class="panel-body">
+					
+					<form method="POST" role="form">
+						{% csrf_token %}
+						<table>
+							<tbody>
+								<tr>
+									<td><label>{{form.nama_karyawan.label}}</label></td>
+									<td>{{form.nama_karyawan}}</td>
+								</tr>
+								<tr>
+									<td><label>{{form.no_identitas.label}}</label></td>
+									<td>{{form.no_identitas}}</td>
+								</tr>
+								<tr>
+									<td><label>{{form.pendidikan_terakhir.label}}</label></td>
+									<td>{{form.pendidikan_terakhir}}</td>
+								</tr>
+								<tr>
+									<td><label>{{form.jurusan.label}}</label></td>
+									<td>{{form.jurusan}}</td>
+								</tr>
+								<tr>
+									<td><label>{{form.provinsi.label}}</label></td>
+									<td>{{form.provinsi}}</td>
+								</tr>
+								<tr>
+									<td><label>{{form.kabupatenkota.label}}</label></td>
+									<td>{{form.kabupatenkota}}</td>
+								</tr>
+								<tr>
+									<td><label>{{form.kecamatan.label}}</label></td>
+									<td>{{form.kecamatan}}</td>
+								</tr>
+								<tr>
+									<td><label>{{form.alamat.label}}</label></td>
+									<td>{{form.alamat}}</td>
+								</tr>
+								<tr>
+									<td><label>{{form.jenis_kelamin.label}}</label></td>
+									<td>{{form.jenis_kelamin}}</td>
+								</tr>
+								<tr>
+									<td><label>{{form.email.label}}</label></td>
+									<td>{{form.email}}</td>
+								</tr>
+								<tr>
+									<td><label>{{form.telepon.label}}</label></td>
+									<td>{{form.telepon}}</td>
+								</tr>
+								<tr>
+									<td><label>{{form.gaji.label}}</label></td>
+									<td>{{form.gaji}}</td>
+								</tr>
+								<tr>
+									<td><label>{{form.jabatan.label}}</label></td>
+									<td>{{form.jabatan}}</td>
+								</tr>
+								<tr>
+									<td><label>{{form.divisi.label}}</label></td>
+									<td>{{form.divisi}}</td>
+								</tr>
+								<tr>
+									<td><label>{{form.status_karyawan.label}}</label></td>
+									<td>{{form.status_karyawan}}</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- /.{{form.as_p}}-->
+						<br \><br \>
+						<input type="submit" class="btn btn-primary" value="Update" />
+						<button type="reset" class="btn btn-danger"><span class="glyphicon glyphicon-refresh"></span> Batal</button>
+					</form>
+				</div>
+				<!-- /.panel-body-->
+			</div>
+			<!-- /.panel-->
+		</div>
+		<!-- /.col-lg-12-->
+	</div>
+	<!-- /.row-->
+
+{% endblock %}

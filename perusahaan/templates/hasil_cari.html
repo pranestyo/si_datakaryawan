@@ -1,0 +1,98 @@
+{% extends "layout/base-popup.html" %}
+{% load perusahaan_helper %}
+{% block content %}
+	<div id="myModal" class="modal fade" role="dialog">
+	    <div class="modal-dialog modal-lg">
+
+	        <!-- Modal content-->
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <a href="/dashboard_perusahaan/" type="button" class="close" >&times;</a>
+	                <h4 class="modal-title">Hasil Pencarian</h4>
+	            </div>
+	            <div class="modal-body">
+	                <p>
+	                	<div class="table-responsive">
+	                		<table class="table table-bordered table-hover table-striped">
+	                			<thead>
+	                				<tr>
+	                					<th>No</th>
+	                					<td>Nama Karyawan</td>
+	                					<td>No. KTP</td>
+	                					<td>Pendidikan Terakhir</td>
+	                					<td>Jurusan</td>
+	                					<td>Provinsi</td>
+	                					<td>Kabupaten/Kota</td>
+	                					<td>Kecamatan</td>
+	                					<td>Alamat</td>
+	                					<td>Jenis Kelamin</td>
+	                					<td>Email</td>
+	                					<td>Telepon</td>
+	                					<td>Gaji</td>
+	                					<td>Jabatan</td>
+	                					<td>Divisi</td>
+	                					<td>Status Karyawan</td>
+	                				</tr>
+	                			</thead>
+	                			<tbody>
+	                				{% if cari_karyawan %}
+	                					{% for cari in detail_karyawan %}
+	                					<tr>
+	                						<td>{{forloop.counter|get_table_number:cari_karyawan.number}}</td>
+	                						<td>{{cari.nama_karyawan}}</td>
+	                						<td>{{cari.no_identitas}}</td>
+	                						<td>{{cari.pendidikan_terakhir}}</td>
+	                						<td>{{cari.jurusan}}</td>
+	                						<td>{{cari.provinsi}}</td>
+	                						<td>{{cari.kabupatenkota}}</td>
+	                						<td>{{cari.kecamatan}}</td>
+	                						<td>{{cari.alamat}}</td>
+	                						<td>{{cari.jenis_kelamin}}</td>
+	                						<td>{{cari.email}}</td>
+	                						<td>{{cari.telepon}}</td>
+	                						<td>{{cari.gaji}}</td>
+	                						<td>{{cari.jabatan}}</td>
+	                						<td>{{cari.divisi}}</td>
+	                						<td>{{cari.status_karyawan}}</td>
+	                					</tr>
+	                					{% endfor %}
+	                				{% else %}
+	                				<tr>
+	                					<td colspan="16" style="text-align:center;">Tidak ada karyawan saat ini.</td>
+	                				</tr>
+	                				{% endif %}
+	                			</tbody>
+	                		</table>
+	                	</div>
+	                	<br />
+	                	<ul class="pager">
+	                		{% if cari_karyawan.has_previous %}
+	                		<li class="previous">
+	                			<a href="?page={{detail_karyawan.previous_page_number}}">previous</a>
+	                		</li>
+	                		{% endif %}
+	                		<li class="current">
+	                			Page {{cari_karyawan.number}} of {{detail_karyawan.paginator.num_pages}}.
+	                		</li>
+	                		{% if cari_karyawan.has_next %}
+	                		<li class="next">
+	                			<a href="?page={{detail_karyawan.next_page_number}}">next</a>
+	                		</li>
+	                		{% endif %}
+	                	</ul>
+	                </p>
+	            </div>
+	            <div class="modal-footer">
+	                <a href="/dashboard_perusahaan/" type="button" class="btn btn-warning">Close</a>
+	            </div>
+	        </div>
+
+	    </div>
+	</div>
+{% endblock %}
+
+{% block inline_js %}
+	<script type="text/javascript">
+		$('#myModal').modal('show');
+	</script>
+{% endblock %}
